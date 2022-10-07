@@ -1,2 +1,2 @@
-filter = '&fq=scope:knb-lter-cap'
+filter = '&fq=scope:knb-lter-cce'
 limit = 100
