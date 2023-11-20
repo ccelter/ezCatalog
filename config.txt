@@ -1,2 +1,2 @@
 filter = '&fq=scope:knb-lter-cce'
-limit = 100
+limit = 20
