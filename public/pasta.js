@@ -528,7 +528,7 @@ window.onload = function () {
    if (!isInteger(eYear)) eYear = (new Date()).getFullYear()
    if (document.forms.dataSearchForm.max_year)
       document.forms.dataSearchForm.max_year.value = eYear;
-
+   var expanded=true;
    initApp(expanded);
 
    if (!query) query = "*"; // default for empty query
