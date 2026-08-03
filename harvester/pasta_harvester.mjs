@@ -13,7 +13,8 @@ const PASTA_CONFIG = {
    "fields": [
       "taxonomic",
       "author"
-   ]
+   ],
+   "apiKey": "PLACE HOLDER"
 };
 
 const OUT_FILE = "./public/pasta_lookup.js";
@@ -106,7 +107,11 @@ function makeBaseUri() {
    const fields = PASTA_CONFIG["fields"].toString();
    const params = "fl=" + fields + "&defType=edismax&q=*" + encodeURI(PASTA_CONFIG["filter"]);
    const limit = "&rows=" + PASTA_CONFIG["limit"];
-   return base + params + limit;
+   let uri = base + params + limit;
+   if (PASTA_CONFIG["apiKey"]) {
+      uri += "&key=" + encodeURIComponent(PASTA_CONFIG["apiKey"]);
+   }
+   return uri;
 }
 
 
