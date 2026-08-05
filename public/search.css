@@ -115,3 +115,18 @@ input[type='checkbox'].collapse-toggle {
    font-weight: bold;
    margin-left: 7px;
 }
+
+/* Obfuscated URL button styled like a link */
+.url-btn {
+   background: none;
+   border: none;
+   color: #0d3760;
+   text-decoration: underline;
+   cursor: pointer;
+   font-family: inherit;
+   font-size: inherit;
+   padding: 0;
+}
+.url-btn:hover {
+   color: #0056b3;
+}

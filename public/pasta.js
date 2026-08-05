@@ -14,8 +14,7 @@ var PASTA_CONFIG = {
    "pagesBotElementId": "paginationBot", // Element to display result page links below results
    "showPages": 5, // MUST BE ODD NUMBER! Max number of page links to show
    "sortDiv": "sortDiv", // Element with interactive sort options
-   "apiKey": "PLACEHOLDER KEY", // Replace with your actual EDI API Access Key
-   "filter": '&fq=scope:cos-spu',
+   "apiKey": "PLACE HOLDER", // Replace with your actual EDI API Access Key
    "useCiteService": true // true if we should use EDI Cite service to build citations instead of building from PASTA results
 };
 
@@ -296,9 +295,21 @@ function errorCallback() {
    alert("There was an error making the request.");
 }
 
-// Writes CORS request URL to the page so user can see it
+// Helper to decode and open obfuscated Base64 URL in a new tab
+window.openObfuscatedUrl = function(element) {
+   var encodedUrl = element.getAttribute('data-url');
+   try {
+      var realUrl = atob(encodedUrl);
+      window.open(realUrl, '_blank');
+   } catch (e) {
+      console.error("Failed to decode Base64 URL:", e);
+   }
+};
+
+// Writes CORS request URL to the page as an obfuscated button so user can see/click it
 function showUrl(url) {
-   var txt = '<a href="' + url + '" target="_blank">' + url + '</a>';
+   var encodedUrl = btoa(url);
+   var txt = '<button class="url-btn" data-url="' + encodedUrl + '" onclick="openObfuscatedUrl(this)">View Search API URL</button>';
    setHtml(PASTA_CONFIG["urlElementId"], txt);
 }
 
@@ -485,6 +496,9 @@ window.onload = function () {
       var dateQuery = makeDateQuery(sYear, eYear, datayear, pubyear);
       var sort = makeSortParam(sortBy);
       var url = base + encodeURI(params + query + dateQuery + sort);
+      if (PASTA_CONFIG["apiKey"]) {
+         url += "&key=" + encodeURIComponent(PASTA_CONFIG["apiKey"]);
+      }
       return url;
    }
 
