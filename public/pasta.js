@@ -14,7 +14,7 @@ var PASTA_CONFIG = {
    "pagesBotElementId": "paginationBot", // Element to display result page links below results
    "showPages": 5, // MUST BE ODD NUMBER! Max number of page links to show
    "sortDiv": "sortDiv", // Element with interactive sort options
-   "apiKey": "PLACE HOLDER", // Replace with your actual EDI API Access Key
+   "apiKey": "kugHvXjzanX4BYmBEoYAnqYRKkA", // Replace with your actual EDI API Access Key
    "useCiteService": true // true if we should use EDI Cite service to build citations instead of building from PASTA results
 };
 
